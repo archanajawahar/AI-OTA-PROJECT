@@ -169,10 +169,10 @@ def recommend():
 
     else:
 
-    recommendation = "No Recommendation Available"
-        return render_template(
-    'result.html',
-    message=f"Recommended Place: {recommendation}")
+     recommendation = "No Recommendation Available"
+     return render_template(
+     'result.html',
+     message=f"Recommended Place: {recommendation}")
 
 
        
