@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Travel Recommendation</title>
+
+    
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <h2>AI Travel Recommendation</h2>
+
+    <form action="/recommend" method="POST">
+
+        <input type="text" name="category" placeholder="Enter Category">
+
+        <br><br>
+
+        <button type="submit">Get Recommendation</button>
+
+    </form>
+
+</body>
+</html>

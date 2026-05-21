@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <h1>Admin Dashboard</h1>
+
+    <h2>Registered Users</h2>
+
+    {% for user in users %}
+
+        <p>{{ user }}</p>
+
+    {% endfor %}
+
+    <br>
+
+    <h2>Bookings</h2>
+
+    {% for booking in bookings %}
+
+        <p>{{ booking }}</p>
+
+    {% endfor %}
+
+    <br><br>
+
+    <a href="/">Home</a>
+
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>User Dashboard</title>
+
+   
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <h1>Welcome {{ name }}</h1>
+
+    <br><br>
+
+    <a href="/booking">Book Travel</a>
+
+    <br><br><br>
+
+    <a href="/recommend">AI Recommendation</a>
+
+    <br><br><br>
+
+<a href="/logout">Logout</a>
+
+</body>
+</html>
