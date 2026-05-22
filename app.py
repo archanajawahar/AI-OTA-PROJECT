@@ -98,6 +98,10 @@ def register():
 
         cur.close()
 
+        session['user'] = name
+
+        return redirect('/')
+
     return render_template('register.html')
 
 @app.route('/book', methods=['GET', 'POST'])
@@ -116,6 +120,8 @@ def book():
         )
 
         mysql.connection.commit()
+
+        cursor.close()
 
         return render_template(
             'result.html',
