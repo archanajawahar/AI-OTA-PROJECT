@@ -15,21 +15,67 @@
 
     <h2>Registered Users</h2>
 
-    {% for user in users %}
+    <table border="1" cellpadding="10">
 
-        <p>{{ user }}</p>
+        <tr>
 
-    {% endfor %}
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Action</th>
 
-    <br>
+        </tr>
+
+        {% for user in users %}
+
+        <tr>
+
+            <td>{{ user[0] }}</td>
+            <td>{{ user[1] }}</td>
+            <td>{{ user[2] }}</td>
+
+            <td>
+                <a href="/delete_user/{{ user[0] }}">Delete</a>
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <br><br>
 
     <h2>Bookings</h2>
 
-    {% for booking in bookings %}
+    <table border="1" cellpadding="10">
 
-        <p>{{ booking }}</p>
+        <tr>
 
-    {% endfor %}
+            <th>ID</th>
+            <th>Name</th>
+            <th>Destination</th>
+            <th>Action</th>
+
+        </tr>
+
+        {% for booking in bookings %}
+
+        <tr>
+
+            <td>{{ booking[0] }}</td>
+            <td>{{ booking[1] }}</td>
+            <td>{{ booking[2] }}</td>
+
+            <td>
+                <a href="/delete_booking/{{ booking[0] }}">Delete</a>
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
 
     <br><br>
 

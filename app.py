@@ -248,6 +248,26 @@ def admin():
             )
 
     return render_template('admin.html')
+@app.route('/delete_user/<int:id>')
+def delete_user(id):
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute("DELETE FROM users WHERE id=%s", (id,))
+
+    mysql.connection.commit()
+
+    return redirect('/admin')
+@app.route('/delete_booking/<int:id>')
+def delete_booking(id):
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute("DELETE FROM bookings WHERE id=%s", (id,))
+
+    mysql.connection.commit()
+
+    return redirect('/admin')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
