@@ -73,55 +73,32 @@ def login():
 
     return render_template('login.html')
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
+return render_template(
+    'result.html',
+    message="User Registered Successfully"
+)
+
+@app.route('/book', methods=['GET', 'POST'])
+def book():
 
     if request.method == 'POST':
 
         name = request.form['name']
-        email = request.form['email']
-        password = request.form['password']
-
-        cur = mysql.connection.cursor()
-
-        cur.execute(
-            "INSERT INTO users(name, email, password) VALUES(%s, %s, %s)",
-            (name, email, password)
-        )
-
-        mysql.connection.commit()
-
-        cur.close()
-
-        return "User Registered Successfully"
-
-    return render_template('register.html')
-
-@app.route('/booking', methods=['GET', 'POST'])
-def booking():
-
-    if request.method == 'POST':
-
-        user_name = request.form['user_name']
-        source = request.form['source']
         destination = request.form['destination']
-        booking_date = request.form['booking_date']
 
-        cur = mysql.connection.cursor()
+        cursor = mysql.connection.cursor()
 
-        cur.execute(
-            "INSERT INTO bookings(user_name, source, destination, booking_date) VALUES(%s, %s, %s, %s)",
-            (user_name, source, destination, booking_date)
+        cursor.execute(
+            "INSERT INTO bookings(name, destination) VALUES(%s, %s)",
+            (name, destination)
         )
 
         mysql.connection.commit()
-
-        cur.close()
 
         return render_template(
-    'result.html',
-    message="Travel Booking Successful"
-)
+            'result.html',
+            message="Ticket Booked Successfully"
+        )
 
     return render_template('booking.html')
 @app.route('/recommend', methods=['GET', 'POST'])
