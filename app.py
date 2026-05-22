@@ -5,12 +5,39 @@ app = Flask(__name__)
 app.secret_key = "travelsecret"
 
 # MySQL Configuration
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'SYSTEM'
-app.config['MYSQL_PASSWORD'] = 'User@123'
-app.config['MYSQL_DB'] = 'AI_OTA_SYSTEM'
+app.config['MYSQL_HOST'] = 'mysql.railway.internal'
+
+app.config['MYSQL_USER'] = 'root'
+
+app.config['MYSQL_PASSWORD'] = 'rtNlpcRYhHkHktuZgNGqGUsOIMSvpzep'
+
+app.config['MYSQL_DB'] = 'railway'
+
+app.config['MYSQL_PORT'] = 3306
 
 mysql = MySQL(app)
+with app.app_context():
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(100),
+        email VARCHAR(100),
+        password VARCHAR(100)
+    )
+    """)
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS bookings (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(100),
+        destination VARCHAR(100)
+    )
+    """)
+
+    mysql.connection.commit()
 
 @app.route('/')
 def home():
