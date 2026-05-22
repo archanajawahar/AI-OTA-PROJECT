@@ -133,74 +133,75 @@ def recommend():
 
         place_type = request.form['category'].strip().lower()
 
-    if place_type == "beach":
+        if place_type == "beach":
 
-       recommendation = "Goa, Maldives, Bali, Pondicherry"
+            recommendation = "Goa, Maldives, Bali, Pondicherry"
 
-    elif place_type == "mountain":
+        elif place_type == "mountain":
 
-       recommendation = "Ooty, Manali, Shimla, Munnar"
+            recommendation = "Ooty, Manali, Shimla, Munnar"
 
-    elif place_type == "city":
+        elif place_type == "city":
 
-       recommendation = "Chennai, Bangalore, Mumbai, Delhi"
+            recommendation = "Chennai, Bangalore, Mumbai, Delhi"
 
-    elif place_type == "adventure":
+        elif place_type == "adventure":
 
-       recommendation = "Rishikesh, Ladakh, Dubai Safari"
+            recommendation = "Rishikesh, Ladakh, Dubai Safari"
 
-    elif place_type == "nature":
+        elif place_type == "nature":
 
-       recommendation = "Kerala, Coorg, Alleppey"
+            recommendation = "Kerala, Coorg, Alleppey"
 
-    elif place_type == "vacation":
+        elif place_type == "vacation":
 
-       recommendation = "Paris, Switzerland, Maldives"
+            recommendation = "Paris, Switzerland, Maldives"
 
-    elif place_type == "spiritual":
+        elif place_type == "spiritual":
 
-       recommendation = "Varanasi, Tirupati, Kedarnath"
+            recommendation = "Varanasi, Tirupati, Kedarnath"
 
-    elif place_type == "historical":
+        elif place_type == "historical":
 
-       recommendation = "Agra, Jaipur, Hampi"
+            recommendation = "Agra, Jaipur, Hampi"
 
-    elif place_type == "wildlife":
+        elif place_type == "wildlife":
 
-       recommendation = "Jim Corbett, Bandipur, Kaziranga"
+            recommendation = "Jim Corbett, Bandipur, Kaziranga"
 
-    elif place_type == "desert":
+        elif place_type == "desert":
 
-       recommendation = "Rajasthan, Dubai, Sahara"
+            recommendation = "Rajasthan, Dubai, Sahara"
 
-    elif place_type == "island":
+        elif place_type == "island":
 
-       recommendation = "Andaman, Lakshadweep, Bali"
-    
-    elif place_type == "snow":
+            recommendation = "Andaman, Lakshadweep, Bali"
 
-     recommendation = "Kashmir, Switzerland, Himachal"
+        elif place_type == "snow":
 
-    elif place_type == "shopping":
+            recommendation = "Kashmir, Switzerland, Himachal"
 
-     recommendation = "Dubai Mall, Singapore, Bangkok"
+        elif place_type == "shopping":
 
-    elif place_type == "luxury":
+            recommendation = "Dubai Mall, Singapore, Bangkok"
 
-     recommendation = "Dubai, Monaco, Maldives"
+        elif place_type == "luxury":
 
-    elif place_type == "food":
+            recommendation = "Dubai, Monaco, Maldives"
 
-     recommendation = "Italy, Chennai, Hyderabad"
+        elif place_type == "food":
 
-    else:
+            recommendation = "Italy, Chennai, Hyderabad"
 
-     recommendation = "No Recommendation Available"
+        else:
 
-    return render_template('result.html', message=f"Recommended Place: {recommendation}")
+            recommendation = "No Recommendation Available"
 
+        return render_template(
+            'result.html',
+            message=f"Recommended Place: {recommendation}"
+        )
 
-       
     return render_template('recommendation.html')
 @app.route('/logout')
 def logout():
