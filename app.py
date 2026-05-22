@@ -78,6 +78,28 @@ def login():
     message="User Registered Successfully"
       )
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+
+    if request.method == 'POST':
+
+        name = request.form['name']
+        email = request.form['email']
+        password = request.form['password']
+
+        cur = mysql.connection.cursor()
+
+        cur.execute(
+            "INSERT INTO users(name, email, password) VALUES(%s, %s, %s)",
+            (name, email, password)
+        )
+
+        mysql.connection.commit()
+
+        cur.close()
+
+    return render_template('register.html')
+
 @app.route('/book', methods=['GET', 'POST'])
 def book():
 
