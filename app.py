@@ -4,16 +4,15 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 app.secret_key = "travelsecret"
 
-# MySQL Configuration
-app.config['MYSQL_HOST'] = 'mysql.railway.internal'
+from urllib.parse import urlparse
 
-app.config['MYSQL_USER'] = 'root'
+url = urlparse("mysql://root:rtNlpcRYhHkHktuZgNGqGUsOIMSvpzep@mysql.railway.internal:3306/railway")
 
-app.config['MYSQL_PASSWORD'] = 'rtNlpcRYhHkHktuZgNGqGUsOIMSvpzep'
-
-app.config['MYSQL_DB'] = 'railway'
-
-app.config['MYSQL_PORT'] = 3306
+app.config['MYSQL_HOST'] = url.hostname
+app.config['MYSQL_USER'] = url.username
+app.config['MYSQL_PASSWORD'] = url.password
+app.config['MYSQL_DB'] = url.path[1:]
+app.config['MYSQL_PORT'] = url.port
 
 mysql = MySQL(app)
 with app.app_context():
