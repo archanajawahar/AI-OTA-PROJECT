@@ -67,16 +67,16 @@ def login():
             return render_template('dashboard.html', name=name)
         else:
             return render_template(
-    'result.html',
-    message="Invalid Email or Password"
-)
+          'result.html',
+           message="Invalid Email or Password"
+           )
 
     return render_template('login.html')
 
-return render_template(
+    return render_template(
     'result.html',
     message="User Registered Successfully"
-)
+      )
 
 @app.route('/book', methods=['GET', 'POST'])
 def book():
