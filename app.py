@@ -98,8 +98,7 @@ def register():
 
         cur.close()
 
-        return render_template('result.html',message="User Registered Successfully",next_page="/dashboard")
-
+        return render_template('result.html',message="User Registered Successfully",next_page="/")
     return render_template('register.html')
 
 @app.route('/book', methods=['GET', 'POST'])
@@ -121,10 +120,7 @@ def book():
 
         cursor.close()
 
-        return render_template(
-            'result.html',
-            message="Ticket Booked Successfully"
-        )
+        return render_template('result.html',message="Ticket Booked Successfully",next_page="/dashboard")
 
     return render_template('booking.html')
 @app.route('/recommend', methods=['GET', 'POST'])
@@ -200,10 +196,7 @@ def recommend():
 
             recommendation = "No Recommendation Available"
 
-        return render_template(
-            'result.html',
-            message=f"Recommended Place: {recommendation}"
-        )
+        return render_template('result.html',message=f"Recommended Place: {recommendation}",next_page="/dashboard")
 
     return render_template('recommendation.html')
 @app.route('/logout')
