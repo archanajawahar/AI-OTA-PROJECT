@@ -226,6 +226,8 @@ def admin():
 
         if username == "admin" and password == "admin123":
 
+            session['admin'] = True
+
             cursor = mysql.connection.cursor()
 
             cursor.execute("SELECT * FROM users")
@@ -251,23 +253,58 @@ def admin():
 @app.route('/delete_user/<int:id>')
 def delete_user(id):
 
-    cursor = mysql.connection.cursor()
+    if 'admin' in session:
 
-    cursor.execute("DELETE FROM users WHERE id=%s", (id,))
+        cursor = mysql.connection.cursor()
 
-    mysql.connection.commit()
+        cursor.execute("DELETE FROM users WHERE id=%s", (id,))
+
+        mysql.connection.commit()
+
+        cursor.close()
+
+        cursor = mysql.connection.cursor()
+
+        cursor.execute("SELECT * FROM users")
+        users = cursor.fetchall()
+
+        cursor.execute("SELECT * FROM bookings")
+        bookings = cursor.fetchall()
+
+        return render_template(
+            'admin_dashboard.html',
+            users=users,
+            bookings=bookings
+        )
 
     return redirect('/admin')
 @app.route('/delete_booking/<int:id>')
 def delete_booking(id):
 
-    cursor = mysql.connection.cursor()
+    if 'admin' in session:
 
-    cursor.execute("DELETE FROM bookings WHERE id=%s", (id,))
+        cursor = mysql.connection.cursor()
 
-    mysql.connection.commit()
+        cursor.execute("DELETE FROM bookings WHERE id=%s", (id,))
+
+        mysql.connection.commit()
+
+        cursor.close()
+
+        cursor = mysql.connection.cursor()
+
+        cursor.execute("SELECT * FROM users")
+        users = cursor.fetchall()
+
+        cursor.execute("SELECT * FROM bookings")
+        bookings = cursor.fetchall()
+
+        return render_template(
+            'admin_dashboard.html',
+            users=users,
+            bookings=bookings
+        )
 
     return redirect('/admin')
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
