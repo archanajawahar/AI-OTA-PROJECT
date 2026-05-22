@@ -6,7 +6,7 @@ app.secret_key = "travelsecret"
 
 from urllib.parse import urlparse
 
-url = urlparse("mysql://root:rtNlpcRYhHkHktuZgNGqGUsOIMSvpzep@mysql.railway.internal:3306/railway")
+url = urlparse("mysql://root:rtNlpcRYhHkHktuZgNGqGUsOIMSvpzep@kodama.proxy.rlwy.net:20307/railway")
 
 app.config['MYSQL_HOST'] = url.hostname
 app.config['MYSQL_USER'] = url.username
