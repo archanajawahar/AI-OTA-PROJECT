@@ -131,7 +131,7 @@ def recommend():
 
     if request.method == 'POST':
 
-        category = request.form['category'].strip().lower()
+        place_type = request.form['category'].strip().lower()
 
     if place_type == "beach":
 
