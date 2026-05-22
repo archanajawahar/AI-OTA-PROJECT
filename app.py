@@ -98,9 +98,7 @@ def register():
 
         cur.close()
 
-        session['user'] = name
-
-        return redirect('/')
+        return render_template('result.html',message="User Registered Successfully",next_page="/dashboard")
 
     return render_template('register.html')
 
