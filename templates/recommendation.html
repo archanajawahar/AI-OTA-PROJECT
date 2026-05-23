@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
-    <title>Travel Recommendation</title>
-
-    
+    <title>AI Travel Recommendation</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
@@ -16,7 +15,45 @@
 
     <form action="/recommend" method="POST">
 
-        <input type="text" name="category" placeholder="Enter Category">
+        <label>Select Travel Type:</label>
+
+        <br><br>
+
+        <select name="category" required>
+
+            <option value="">-- Select Type --</option>
+
+            <option value="beach">Beach</option>
+
+            <option value="mountain">Mountain</option>
+
+            <option value="city">City</option>
+
+            <option value="adventure">Adventure</option>
+
+            <option value="nature">Nature</option>
+
+            <option value="vacation">Vacation</option>
+
+            <option value="spiritual">Spiritual</option>
+
+            <option value="historical">Historical</option>
+
+            <option value="wildlife">Wildlife</option>
+
+            <option value="desert">Desert</option>
+
+            <option value="island">Island</option>
+
+            <option value="snow">Snow</option>
+
+            <option value="shopping">Shopping</option>
+
+            <option value="luxury">Luxury</option>
+
+            <option value="food">Food</option>
+
+        </select>
 
         <br><br>
 
@@ -25,4 +62,5 @@
     </form>
 
 </body>
+
 </html>
